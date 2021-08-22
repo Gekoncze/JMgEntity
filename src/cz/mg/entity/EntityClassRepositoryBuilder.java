@@ -39,6 +39,8 @@ public @Utility class EntityClassRepositoryBuilder {
         for(Class clazz : classes){
             if(isInstantiable(clazz)){
                 resolve(clazz, repository, subclassMap);
+            } else {
+                throw new IllegalArgumentException("Class '" + clazz.getSimpleName() + "' is not instantiable.");
             }
         }
 
@@ -54,12 +56,14 @@ public @Utility class EntityClassRepositoryBuilder {
     }
 
     private boolean isInstantiable(@Mandatory Class clazz){
-        if(!Modifier.isAbstract(clazz.getModifiers())){
-            try {
-                clazz.getConstructor();
-                return true;
-            } catch (Exception e){
-                return false;
+        if(!clazz.isInterface()){
+            if(!Modifier.isAbstract(clazz.getModifiers())){
+                try {
+                    clazz.getConstructor();
+                    return true;
+                } catch (Exception e){
+                    return false;
+                }
             }
         }
         return false;
