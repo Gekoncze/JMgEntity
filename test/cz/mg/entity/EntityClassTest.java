@@ -3,15 +3,15 @@ package cz.mg.entity;
 import cz.mg.collections.list.List;
 import cz.mg.test.Test;
 import cz.mg.test.annotations.TestCase;
-import cz.mg.test.runner.SingleTestRunner;
+import cz.mg.test.cli.runners.SingleTestClassRunner;
 
 
 public class EntityClassTest implements Test {
     public static void main(String[] args) {
-        new SingleTestRunner().run(new EntityClassTest());
+        new SingleTestClassRunner().run(EntityClassTest.class);
     }
 
-    @TestCase(order = 0)
+    @TestCase(order = 1)
     public void testGetField() throws Exception {
         List<EntityField> fields = new List<>();
         EntityClass entityClass = new EntityClass(TestEntity.class, fields, new List<>());
@@ -27,13 +27,13 @@ public class EntityClassTest implements Test {
         assertExceptionThrown(() -> entityClass.getField("xyz"));
     }
 
-    @TestCase(order = 1)
+    @TestCase(order = 2)
     public void testGetName(){
         EntityClass entityClass = new EntityClass(TestEntity.class, new List<>(), new List<>());
         assertEquals(TestEntity.class.getSimpleName(), entityClass.getName());
     }
 
-    @TestCase(order = 2)
+    @TestCase(order = 3)
     public void testNewInstance(){
         EntityClass entityClass = new EntityClass(TestEntity.class, new List<>(), new List<>());
         TestEntity testEntity = (TestEntity) entityClass.newInstance();

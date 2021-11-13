@@ -6,7 +6,6 @@ import cz.mg.annotations.requirement.Optional;
 import cz.mg.annotations.storage.Part;
 import cz.mg.collections.list.List;
 import cz.mg.entity.EntityClass;
-import cz.mg.entity.EntityClasses;
 import cz.mg.entity.EntityField;
 import cz.mg.entity.mapper.ObjectMapper;
 
@@ -14,8 +13,8 @@ import cz.mg.entity.mapper.ObjectMapper;
 public @Utility class EntityObjectMapper implements ObjectMapper<Object> {
     private final @Mandatory @Part EntityClass entityClass;
 
-    public EntityObjectMapper(@Mandatory Class clazz) {
-        this.entityClass = EntityClasses.getRepository().get(clazz);
+    public EntityObjectMapper(@Mandatory EntityClass entityClass) {
+        this.entityClass = entityClass;
     }
 
     @Override

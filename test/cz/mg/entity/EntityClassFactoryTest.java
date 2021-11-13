@@ -3,15 +3,15 @@ package cz.mg.entity;
 import cz.mg.collections.list.List;
 import cz.mg.test.Test;
 import cz.mg.test.annotations.TestCase;
-import cz.mg.test.runner.SingleTestRunner;
+import cz.mg.test.cli.runners.SingleTestClassRunner;
 
 
 public class EntityClassFactoryTest implements Test {
     public static void main(String[] args) {
-        new SingleTestRunner().run(new EntityClassFactoryTest());
+        new SingleTestClassRunner().run(EntityClassFactoryTest.class);
     }
 
-    @TestCase(order = 0)
+    @TestCase(order = 1)
     public void testCannotCreateNonEntityClass(){
         EntityClassFactory entityClassFactory = new EntityClassFactory();
 
@@ -21,7 +21,7 @@ public class EntityClassFactoryTest implements Test {
         );
     }
 
-    @TestCase(order = 1)
+    @TestCase(order = 2)
     public void testMustHaveParameterlessConstructor(){
         EntityClassFactory entityClassFactory = new EntityClassFactory();
 
@@ -31,7 +31,7 @@ public class EntityClassFactoryTest implements Test {
         );
     }
 
-    @TestCase(order = 2)
+    @TestCase(order = 3)
     public void testCreate() throws Exception {
         EntityClassFactory entityClassFactory = new EntityClassFactory();
         EntityClass entityClass = entityClassFactory.create(TestEntity.class, new List<>());
