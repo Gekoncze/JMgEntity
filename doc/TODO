@@ -1,5 +1,8 @@
-add static field called "entity" to each entity class for paster access ?
-add test for hierarchy and subclasses
+add test for hierarchy and subclasses (needs initialization service)
 allow entities to have static fields for other purposes
-move entity mapper to this project
 move entity validation framework to this project
+
+implement entity class detection service
+implement entity class initialization service
+implement entity class reader
+implement entity class writer
