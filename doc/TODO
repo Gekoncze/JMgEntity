@@ -3,7 +3,3 @@ add test for hierarchy and subclasses
 allow entities to have static fields for other purposes
 move entity mapper to this project
 move entity validation framework to this project
-create class detector framework into separate project
-    extract form jmgnativeapplication
-    output would be list of strings with full-path class names
-    the detector should be called before each application deployment

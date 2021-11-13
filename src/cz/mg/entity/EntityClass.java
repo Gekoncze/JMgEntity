@@ -1,13 +1,13 @@
 package cz.mg.entity;
 
-import cz.mg.annotations.classes.Entity;
+import cz.mg.annotations.classes.Utility;
 import cz.mg.annotations.requirement.Mandatory;
 import cz.mg.annotations.requirement.Optional;
 import cz.mg.collections.list.List;
 import cz.mg.collections.list.ReadableList;
 
 
-public @Entity class EntityClass {
+public @Utility class EntityClass {
     private final @Mandatory Class clazz;
     private final @Mandatory List<EntityField> fields;
     private final @Mandatory List<EntityClass> subclasses;
