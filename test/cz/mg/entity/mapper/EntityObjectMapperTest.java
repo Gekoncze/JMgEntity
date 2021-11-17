@@ -20,7 +20,7 @@ public class EntityObjectMapperTest implements Test {
         tree.branches = new List<>();
 
         ObjectMapper objectMapper = new EntityObjectMapper(
-            new EntityClassFactory().create(TestTree.class, new List<>())
+            new EntityClassFactory().create(TestTree.class)
         );
 
         assertNotNull(objectMapper.create(null));

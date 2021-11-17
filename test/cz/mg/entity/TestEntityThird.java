@@ -6,6 +6,8 @@ import cz.mg.annotations.storage.Value;
 
 
 public @Entity class TestEntityThird {
-    public @Part TestEntitySecond testEntitySecond;
+    public static EntityClass entity;
+
+    public @Part TestEntityChild testEntityChild;
     public @Value Boolean bool;
 }

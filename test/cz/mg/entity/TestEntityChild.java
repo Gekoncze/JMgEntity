@@ -4,6 +4,8 @@ import cz.mg.annotations.classes.Entity;
 import cz.mg.annotations.storage.Value;
 
 
-public @Entity class TestEntitySecond extends TestEntity {
+public @Entity class TestEntityChild extends TestEntity {
+    public static EntityClass entity;
+
     public @Value String text;
 }

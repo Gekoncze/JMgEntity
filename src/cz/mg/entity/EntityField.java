@@ -9,8 +9,8 @@ import java.lang.reflect.Field;
 
 
 public @Utility class EntityField {
-    private final @Mandatory EntityClass entityClass;
-    private final @Mandatory Field field;
+    final @Mandatory EntityClass entityClass;
+    final @Mandatory Field field;
 
     EntityField(@Mandatory EntityClass entityClass, @Mandatory Field field) {
         this.entityClass = entityClass;

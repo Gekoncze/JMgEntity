@@ -8,9 +8,9 @@ import cz.mg.collections.list.ReadableList;
 
 
 public @Utility class EntityClass {
-    private final @Mandatory Class clazz;
-    private final @Mandatory List<EntityField> fields;
-    private final @Mandatory List<EntityClass> subclasses;
+    final @Mandatory Class clazz;
+    final @Mandatory List<EntityField> fields;
+    final @Mandatory List<EntityClass> subclasses;
 
     EntityClass(
         @Mandatory Class clazz,

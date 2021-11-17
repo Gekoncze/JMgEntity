@@ -9,13 +9,14 @@ import cz.mg.collections.list.List;
 import cz.mg.collections.list.ListSorter;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.Modifier;
 import java.util.Comparator;
 
 
 public @Service class EntityClassFactory {
     private final @Mandatory @Link EntityFieldFactory entityFieldFactory = new EntityFieldFactory();
 
-    public @Mandatory EntityClass create(@Mandatory Class clazz, @Mandatory List<EntityClass> subclasses){
+    public @Mandatory EntityClass create(@Mandatory Class clazz){
         if(!clazz.isAnnotationPresent(Entity.class)){
             throw new IllegalArgumentException("Missing entity annotation for class '" + clazz.getSimpleName() + "'.");
         }
@@ -27,18 +28,19 @@ public @Service class EntityClassFactory {
         }
 
         List<EntityField> fields = new ArrayList<>();
-        EntityClass entityClass = new EntityClass(clazz, fields, subclasses);
+        EntityClass entityClass = new EntityClass(clazz, fields, new List<>());
 
         Class current = clazz;
         while(current != null){
             for(Field field : current.getDeclaredFields()){
-                fields.addLast(entityFieldFactory.create(entityClass, field));
+                if(!Modifier.isStatic(field.getModifiers())){
+                    fields.addLast(entityFieldFactory.create(entityClass, field));
+                }
             }
             current = current.getSuperclass();
         }
 
         ListSorter.sortInPlace(fields, Comparator.comparing(EntityField::getName));
-        ListSorter.sortInPlace(subclasses, Comparator.comparing(EntityClass::getName));
 
         return entityClass;
     }

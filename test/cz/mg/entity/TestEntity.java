@@ -6,6 +6,8 @@ import cz.mg.annotations.storage.Value;
 
 
 public @Entity class TestEntity {
+    public static EntityClass entity;
+
     public @Value Integer number;
     public @Value TestEnum enumeration;
     public @Link TestEntity next;

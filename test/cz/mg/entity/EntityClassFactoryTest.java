@@ -17,7 +17,7 @@ public class EntityClassFactoryTest implements Test {
 
         assertExceptionThrown(
             IllegalArgumentException.class,
-            () -> entityClassFactory.create(TestEnum.class, new List<>())
+            () -> entityClassFactory.create(TestEnum.class)
         );
     }
 
@@ -27,14 +27,14 @@ public class EntityClassFactoryTest implements Test {
 
         assertExceptionThrown(
             IllegalArgumentException.class,
-            () -> entityClassFactory.create(TestImmutableEntity.class, new List<>())
+            () -> entityClassFactory.create(TestImmutableEntity.class)
         );
     }
 
     @TestCase(order = 3)
     public void testCreate() throws Exception {
         EntityClassFactory entityClassFactory = new EntityClassFactory();
-        EntityClass entityClass = entityClassFactory.create(TestEntity.class, new List<>());
+        EntityClass entityClass = entityClassFactory.create(TestEntity.class);
 
         assertNotNull(entityClass);
         assertEquals(3, entityClass.getFields().count());

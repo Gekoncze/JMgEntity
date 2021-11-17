@@ -8,13 +8,13 @@ import cz.mg.annotations.storage.Part;
 import cz.mg.annotations.storage.Shared;
 import cz.mg.collections.list.List;
 import cz.mg.collections.map.Map;
+import cz.mg.entity.EntityClassProvider;
 import cz.mg.entity.mapper.mappers.EntityObjectMapper;
 import cz.mg.entity.mapper.mappers.EnumObjectMapper;
 import cz.mg.entity.mapper.mappers.collection.ListObjectMapper;
 import cz.mg.entity.mapper.mappers.value.BooleanObjectMapper;
 import cz.mg.entity.mapper.mappers.value.IntegerObjectMapper;
 import cz.mg.entity.mapper.mappers.value.StringObjectMapper;
-import cz.mg.entity.services.EntityClassProvider;
 
 
 public @Utility class ObjectMapperRepositoryBuilder {
