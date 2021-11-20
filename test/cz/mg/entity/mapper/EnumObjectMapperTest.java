@@ -1,6 +1,6 @@
 package cz.mg.entity.mapper;
 
-import cz.mg.entity.mapper.mappers.EnumObjectMapper;
+import cz.mg.entity.mapper.common.EnumObjectMapper;
 import cz.mg.test.Test;
 import cz.mg.test.annotations.TestCase;
 import cz.mg.test.cli.runners.SingleTestClassRunner;

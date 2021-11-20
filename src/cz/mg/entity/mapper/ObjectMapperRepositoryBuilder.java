@@ -9,12 +9,12 @@ import cz.mg.annotations.storage.Shared;
 import cz.mg.collections.list.List;
 import cz.mg.collections.map.Map;
 import cz.mg.entity.EntityClassProvider;
-import cz.mg.entity.mapper.mappers.EntityObjectMapper;
-import cz.mg.entity.mapper.mappers.EnumObjectMapper;
-import cz.mg.entity.mapper.mappers.collection.ListObjectMapper;
-import cz.mg.entity.mapper.mappers.value.BooleanObjectMapper;
-import cz.mg.entity.mapper.mappers.value.IntegerObjectMapper;
-import cz.mg.entity.mapper.mappers.value.StringObjectMapper;
+import cz.mg.entity.mapper.common.EntityObjectMapper;
+import cz.mg.entity.mapper.common.EnumObjectMapper;
+import cz.mg.entity.mapper.common.collection.ListObjectMapper;
+import cz.mg.entity.mapper.common.value.BooleanObjectMapper;
+import cz.mg.entity.mapper.common.value.IntegerObjectMapper;
+import cz.mg.entity.mapper.common.value.StringObjectMapper;
 
 
 public @Utility class ObjectMapperRepositoryBuilder {

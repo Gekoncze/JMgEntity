@@ -1,8 +1,8 @@
-package cz.mg.entity.mapper.mappers.value;
+package cz.mg.entity.mapper.common.value;
 
 import cz.mg.annotations.requirement.Mandatory;
 import cz.mg.annotations.requirement.Optional;
-import cz.mg.entity.mapper.mappers.ValueObjectMapper;
+import cz.mg.entity.mapper.common.ValueObjectMapper;
 
 
 public class StringObjectMapper implements ValueObjectMapper<String> {

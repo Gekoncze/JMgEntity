@@ -1,1 +1,6 @@
-move entity validation framework to this project
+validator
+    add "entity as a whole" validator
+        run before or after field validations?
+        or allow both?
+
+    add entity class (entity definition itself) validator

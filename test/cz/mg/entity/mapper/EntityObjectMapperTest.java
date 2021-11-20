@@ -2,7 +2,7 @@ package cz.mg.entity.mapper;
 
 import cz.mg.collections.list.List;
 import cz.mg.entity.EntityClassFactory;
-import cz.mg.entity.mapper.mappers.EntityObjectMapper;
+import cz.mg.entity.mapper.common.EntityObjectMapper;
 import cz.mg.test.Test;
 import cz.mg.test.annotations.TestCase;
 import cz.mg.test.cli.runners.SingleTestClassRunner;

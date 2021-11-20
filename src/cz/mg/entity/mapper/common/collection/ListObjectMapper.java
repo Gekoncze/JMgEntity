@@ -1,4 +1,4 @@
-package cz.mg.entity.mapper.mappers.collection;
+package cz.mg.entity.mapper.common.collection;
 
 import cz.mg.annotations.requirement.Mandatory;
 import cz.mg.annotations.requirement.Optional;
