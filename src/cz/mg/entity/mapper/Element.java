@@ -5,7 +5,7 @@ import cz.mg.annotations.storage.Value;
 import cz.mg.collections.list.List;
 
 
-public @Entity class Node {
+public @Entity class Element {
     public @Value String name;
     public @Value String value;
     public @Value List<Integer> fields;
