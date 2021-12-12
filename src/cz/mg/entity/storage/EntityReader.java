@@ -14,15 +14,6 @@ import cz.mg.sql.light.connection.connections.SqliteConnection;
 public @Service class EntityReader {
     private final @Mandatory @Shared ElementTableReader elementTableReader = new ElementTableReader();
 
-    public @Mandatory Object readMandatory(@Mandatory String path, @Mandatory Mapper mapper){
-        Object entity = read(path, mapper);
-        if(entity != null){
-            return entity;
-        } else {
-            throw new NullPointerException();
-        }
-    }
-
     public @Optional Object read(@Mandatory String path, @Mandatory Mapper mapper){
         return mapper.unmap(loadElements(path));
     }
