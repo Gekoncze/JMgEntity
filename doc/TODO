@@ -4,3 +4,57 @@ validator
         or allow both?
 
     add entity class (entity definition itself) validator
+
+explorer
+    customizations
+        add field select display order customizations
+        add field select display customization
+
+    add more icons
+        Boolean
+        Enum
+        Integer
+        String
+
+    add more unit tests
+        transaction
+        transaction manager
+        all explorer services
+        all explorer gui services
+
+    add list field and list view
+        implement list view
+        add mouse click selection to UiList
+        add multi selection to UiList
+
+    add cleanup button
+        will offer to delete objects that are not owned
+        add button to main menu
+        change icon of remove - unify delete and clear
+
+    bug in ui list field
+        clicking on icon does not select field
+        check if this should be handled somehow in ui value field
+
+    improve multi select
+        add drag and drop move action
+        add keyboard shortcuts to move up / down
+        add keyboard shortcuts to select next / previous item
+
+    navigation
+        add menu items for right click in navigation tree
+        add navigation bar
+        add button to locate currently opened object in navigation tree
+
+    idea for mouse event traversal (check if this doesn't work in swing by default)
+        investigate if this should be implemented
+        for each ui component, register a mouse listener
+        the handler will iterate to top most parent
+        then it will propagate an onEnter event down to the target component
+        then it will propagate an onLeave event up to the top most parent component
+        consume should stop the propagation
+
+    add validations
+        add validation on navigation refresh + display error icon
+        add validation on component refresh + highlight errorneous fields + add tooltip
+        run validations for all entities before export or compile
