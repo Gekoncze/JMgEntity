@@ -13,7 +13,7 @@ import java.nio.file.Path;
 public @Utility class Explorer {
     private final @Mandatory @Part TransactionManager transactionManager = new TransactionManager();
     private final @Mandatory Mapper mapper;
-    private @Optional @Part Object root;
+    private @Optional @Part Object project;
     private @Optional @Part Path path;
 
     public Explorer(@Mandatory Mapper mapper) {
@@ -28,12 +28,12 @@ public @Utility class Explorer {
         return mapper;
     }
 
-    public @Optional Object getRoot() {
-        return root;
+    public @Optional Object getProject() {
+        return project;
     }
 
-    public void setRoot(@Optional Object root) {
-        this.root = root;
+    public void setProject(@Optional Object project) {
+        this.project = project;
     }
 
     public @Optional Path getPath() {
