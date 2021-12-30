@@ -5,7 +5,11 @@ import cz.mg.annotations.requirement.Mandatory;
 import cz.mg.annotations.storage.Link;
 import cz.mg.annotations.storage.Part;
 import cz.mg.annotations.storage.Shared;
+import cz.mg.entity.EntityClass;
+import cz.mg.entity.EntityField;
+import cz.mg.entity.explorer.gui.services.EntityClassNameFieldProvider;
 import cz.mg.entity.explorer.gui.ui.dialogs.UiConfirmDialog;
+import cz.mg.entity.explorer.gui.ui.dialogs.UiInputDialog;
 import cz.mg.entity.explorer.gui.ui.dialogs.UiOpenDialog;
 import cz.mg.entity.explorer.gui.ui.dialogs.UiSaveDialog;
 import cz.mg.entity.explorer.services.ExplorerProjectService;
@@ -17,6 +21,7 @@ import java.nio.file.Path;
 
 public @Utility class ExplorerActions {
     private final @Mandatory @Shared ExplorerProjectService explorerProjectService = new ExplorerProjectService();
+    private final @Mandatory @Shared EntityClassNameFieldProvider entityClassNameFieldProvider = new EntityClassNameFieldProvider();
 
     private final @Mandatory @Link ExplorerWindow window;
     private final @Mandatory @Part FileFilter projectFileFilter;
@@ -35,16 +40,24 @@ public @Utility class ExplorerActions {
             }
         }
 
-        String name = JOptionPane.showInputDialog(this, "New Project");
-        if(name != null){
-            explorerProjectService.newProject(
-                window.getExplorer(),
-                name
-            );
+        EntityClass entityClass = window.getExplorer().getEntityClass();
+        EntityField nameField = entityClassNameFieldProvider.get(entityClass);
+        Object project = entityClass.newInstance();
+
+        if(nameField != null){
+            String name = new UiInputDialog("New Project", "Project name").show();
+            if(name != null){
+                nameField.set(project, name);
+                explorerProjectService.newProject(window.getExplorer(), project);
+                refresh();
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            explorerProjectService.newProject(window.getExplorer(), project);
             refresh();
             return true;
-        } else {
-            return false;
         }
     }
 

@@ -1,6 +1,5 @@
 package cz.mg.entity;
 
-import cz.mg.collections.list.List;
 import cz.mg.test.Test;
 import cz.mg.test.annotations.TestCase;
 import cz.mg.test.cli.runners.SingleTestClassRunner;

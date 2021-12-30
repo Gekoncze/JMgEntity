@@ -5,6 +5,7 @@ import cz.mg.annotations.storage.Part;
 import cz.mg.annotations.storage.Value;
 
 
+@Deprecated
 public @Entity class TestEntityThird {
     public static EntityClass entity;
 

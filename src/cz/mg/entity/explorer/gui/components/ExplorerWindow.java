@@ -6,6 +6,7 @@ import cz.mg.annotations.requirement.Optional;
 import cz.mg.annotations.storage.Cache;
 import cz.mg.annotations.storage.Part;
 import cz.mg.annotations.storage.Shared;
+import cz.mg.entity.EntityClass;
 import cz.mg.entity.explorer.Explorer;
 import cz.mg.entity.explorer.gui.Gallery;
 import cz.mg.entity.explorer.gui.icons.Icons;
@@ -43,8 +44,12 @@ public @Utility class ExplorerWindow extends JFrame implements Refreshable {
     private final @Mandatory @Part Gallery gallery;
     private @Optional @Cache Navigation navigation;
 
-    public ExplorerWindow(@Mandatory Mapper mapper, @Mandatory FileFilter projectFileFilter) {
-        this.explorer = new Explorer(mapper);
+    public ExplorerWindow(
+        @Mandatory EntityClass entityClass,
+        @Mandatory Mapper mapper,
+        @Mandatory FileFilter projectFileFilter
+    ) {
+        this.explorer = new Explorer(entityClass, mapper);
         gallery = new Gallery();
         galleryIconService.initialize(gallery, Icons.class);
         menu = new ExplorerMenu(this, projectFileFilter);

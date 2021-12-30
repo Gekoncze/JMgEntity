@@ -24,34 +24,42 @@ public @Utility class ObjectMapperRepositoryBuilder {
     public ObjectMapperRepositoryBuilder() {
     }
 
-    public <T> void addObjectMapper(@Mandatory Class<T> clazz, @Mandatory ObjectMapper<T> objectMapper){
+    public <T> @Mandatory ObjectMapperRepositoryBuilder addObjectMapper(
+        @Mandatory Class<T> clazz,
+        @Mandatory ObjectMapper<T> objectMapper
+    ){
         map.set(clazz, objectMapper);
+        return this;
     }
 
-    public void addDefault(){
+    public @Mandatory ObjectMapperRepositoryBuilder addDefault(){
         addObjectMapper(Boolean.class, new BooleanObjectMapper());
         addObjectMapper(Integer.class, new IntegerObjectMapper());
         addObjectMapper(String.class, new StringObjectMapper());
         addObjectMapper(List.class, new ListObjectMapper());
+        return this;
     }
 
-    public void addEntity(@Mandatory Class entityClass){
+    public @Mandatory ObjectMapperRepositoryBuilder addEntity(@Mandatory Class entityClass){
         addObjectMapper(entityClass, new EntityObjectMapper(entityClassProvider.get(entityClass)));
+        return this;
     }
 
-    public void addEnum(@Mandatory Class enumClass){
+    public @Mandatory ObjectMapperRepositoryBuilder addEnum(@Mandatory Class enumClass){
         addObjectMapper(enumClass, new EnumObjectMapper(enumClass));
+        return this;
     }
 
-    public void addClassOptional(@Mandatory Class clazz){
+    public @Mandatory ObjectMapperRepositoryBuilder addClassOptional(@Mandatory Class clazz){
         if(Enum.class.isAssignableFrom(clazz)){
             addEnum(clazz);
         } else if(clazz.isAnnotationPresent(Entity.class)){
             addEntity(clazz);
         }
+        return this;
     }
 
-    public ObjectMapperRepository build(){
+    public @Mandatory ObjectMapperRepository build(){
         ObjectMapperRepository repository = new ObjectMapperRepository();
         for(Class clazz : map.keys()){
             repository.set(clazz, map.get(clazz));

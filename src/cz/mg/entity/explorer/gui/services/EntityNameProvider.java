@@ -12,17 +12,15 @@ import cz.mg.entity.EntityField;
 
 public @Service class EntityNameProvider {
     private final @Mandatory @Shared EntityClassProvider entityClassProvider = new EntityClassProvider();
+    private final @Mandatory @Shared EntityClassNameFieldProvider entityClassNameFieldProvider = new EntityClassNameFieldProvider();
 
     public @Optional String get(@Optional Object object){
         if(object != null) {
             if (object.getClass().isAnnotationPresent(Entity.class)) {
                 EntityClass entityClass = entityClassProvider.get(object.getClass());
-                EntityField entityField = entityClass.getField("name");
+                EntityField entityField = entityClassNameFieldProvider.get(entityClass);
                 if (entityField != null) {
-                    Object value = entityField.get(object);
-                    if (value instanceof String) {
-                        return (String) value;
-                    }
+                    return (String) entityField.get(object);
                 }
             }
         }

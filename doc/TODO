@@ -1,3 +1,15 @@
+tests
+    add simple icons for new test classes
+
+    remove deprecated test classes
+        replace deprecated test classes with new classes
+
+    add more unit tests
+        transaction
+        transaction manager
+        all explorer services
+        all explorer gui services
+
 validator
     add "entity as a whole" validator
         run before or after field validations?
@@ -6,15 +18,11 @@ validator
     add entity class (entity definition itself) validator
 
 explorer
+    add / remove row buttons are missing
+
     customizations
         add field select display order customizations
         add field select display customization
-
-    add more unit tests
-        transaction
-        transaction manager
-        all explorer services
-        all explorer gui services
 
     add list field and list view
         implement list view

@@ -5,6 +5,7 @@ import cz.mg.annotations.storage.Link;
 import cz.mg.annotations.storage.Value;
 
 
+@Deprecated
 public @Entity class TestPrivateEntity {
     private @Value Integer number;
     private @Value TestEnum enumeration;

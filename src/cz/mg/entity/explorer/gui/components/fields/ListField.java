@@ -55,9 +55,9 @@ public @Utility class ListField extends ObjectField {
         this.label = new UiText(label, UiText.FontStyle.BOLD);
         this.field = new UiValueField(window, this::getIcon, UiObjectFieldBase::new);
         this.field.getBase().addMouseListener(new MouseClickUserEventHandler(window, this::onMouseClicked));
-        this.createButton = new UiButton(window, getIcon(Icons.CREATE), null, "Create", this::onCreateButtonClicked);
-        this.openButton = new UiButton(window, getIcon(Icons.OPEN), null, "Open", this::onOpenButtonClicked);
-        this.deleteButton = new UiButton(window, getIcon(Icons.DELETE), null, "Delete", this::onDeleteButtonClicked);
+        this.createButton = new UiButton(window, getButtonIcon(Icons.CREATE), null, "Create", this::onCreateButtonClicked);
+        this.openButton = new UiButton(window, getButtonIcon(Icons.OPEN), null, "Open", this::onOpenButtonClicked);
+        this.deleteButton = new UiButton(window, getButtonIcon(Icons.DELETE), null, "Delete", this::onDeleteButtonClicked);
         this.list = new UiList();
         this.parameterType = parameterType;
         this.ownership = ownership;

@@ -63,4 +63,8 @@ public abstract @Utility class ObjectField extends UiPanel implements Refreshabl
     protected @Optional Image getIcon(@Optional Object object){
         return objectIconProvider.get(window.getGallery(), object);
     }
+
+    protected @Optional Image getButtonIcon(@Mandatory String name){
+        return window.getGallery().getImage(name);
+    }
 }

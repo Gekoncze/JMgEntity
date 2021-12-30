@@ -5,6 +5,7 @@ import cz.mg.annotations.storage.Link;
 import cz.mg.annotations.storage.Value;
 
 
+@Deprecated
 public @Entity class TestImmutableEntity {
     public final @Value Integer number;
     public final @Value TestEnum enumeration;

@@ -45,10 +45,10 @@ public @Utility class LinkField extends ObjectField {
         this.field.getBase().addFocusListener(new FocusLostUserEventHandler(window, this::onFocusLost));
         this.field.getBase().addKeyListener(new KeyPressedUserEventHandler(window, this::onKeyPressed));
         this.field.getBase().addMouseListener(new MouseClickUserEventHandler(window, this::onMouseClicked));
-        this.searchButton = new UiButton(window, getIcon(Icons.SEARCH), null, "Search", this::onSearchButtonClicked);
-        this.openButton = new UiButton(window, getIcon(Icons.OPEN), null, "Open", this::onOpenButtonClicked);
-        this.editButton = new UiButton(window, getIcon(Icons.EDIT), null, "Edit", this::onEditButtonClicked);
-        this.clearButton = new UiButton(window, getIcon(Icons.CLEAR), null, "Clear", this::onClearButtonClicked);
+        this.searchButton = new UiButton(window, getButtonIcon(Icons.SEARCH), null, "Search", this::onSearchButtonClicked);
+        this.openButton = new UiButton(window, getButtonIcon(Icons.OPEN), null, "Open", this::onOpenButtonClicked);
+        this.editButton = new UiButton(window, getButtonIcon(Icons.EDIT), null, "Edit", this::onEditButtonClicked);
+        this.clearButton = new UiButton(window, getButtonIcon(Icons.CLEAR), null, "Clear", this::onClearButtonClicked);
         this.popupMenu = new EntitySearchPopupMenu(window, this::setValue);
         addHorizontal(this.label, 0, 0, UiAlignment.MIDDLE, UiFill.BOTH);
         addHorizontal(this.field, 1, 0, UiAlignment.MIDDLE, UiFill.BOTH);

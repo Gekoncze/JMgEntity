@@ -47,9 +47,9 @@ public @Utility class PartField extends ObjectField {
         this.label = new UiText(label, UiText.FontStyle.BOLD);
         this.field = new UiValueField(window, this::getIcon, UiObjectFieldBase::new);
         this.field.getBase().addMouseListener(new MouseClickUserEventHandler(window, this::onMouseClicked));
-        this.createButton = new UiButton(window, getIcon(Icons.CREATE), null, "Create", this::onCreateButtonClicked);
-        this.openButton = new UiButton(window, getIcon(Icons.OPEN), null, "Open", this::onOpenButtonClicked);
-        this.deleteButton = new UiButton(window, getIcon(Icons.DELETE), null, "Delete", this::onDeleteButtonClicked);
+        this.createButton = new UiButton(window, getButtonIcon(Icons.CREATE), null, "Create", this::onCreateButtonClicked);
+        this.openButton = new UiButton(window, getButtonIcon(Icons.OPEN), null, "Open", this::onOpenButtonClicked);
+        this.deleteButton = new UiButton(window, getButtonIcon(Icons.DELETE), null, "Delete", this::onDeleteButtonClicked);
         this.popupMenu = new EntityClassPopupMenu(window, entityClassProvider.get(type), this::onCreate);
         addHorizontal(this.label, 0, 0, UiAlignment.MIDDLE, UiFill.BOTH);
         addHorizontal(this.field, 1, 0, UiAlignment.MIDDLE, UiFill.BOTH);
