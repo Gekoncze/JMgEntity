@@ -10,12 +10,6 @@ explorer
         add field select display order customizations
         add field select display customization
 
-    add more icons
-        Boolean
-        Enum
-        Integer
-        String
-
     add more unit tests
         transaction
         transaction manager

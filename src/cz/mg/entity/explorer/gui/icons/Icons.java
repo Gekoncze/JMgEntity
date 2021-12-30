@@ -12,6 +12,7 @@ public @Utility class Icons {
     public static final String DELETE_ROW = "removerow.png";
     public static final String DOWN = "down.png";
     public static final String EDIT = "edit.png";
+    public static final String INTEGER = "integer.png";
     public static final String LIST = "list.png";
     public static final String OPEN = "open.png";
     public static final String SEARCH = "search.png";
