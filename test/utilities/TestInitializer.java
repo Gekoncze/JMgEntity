@@ -12,7 +12,9 @@ public class TestInitializer {
         new EntityClassInitializer().initialize(new List<>(
             TestRoot.class,
             TestBranch.class,
-            TestLeaf.class
+            TestLeaf.class,
+            TestSubclass.class,
+            TestChain.class
         ));
     }
 }
