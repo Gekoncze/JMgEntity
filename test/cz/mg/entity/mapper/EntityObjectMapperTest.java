@@ -6,6 +6,7 @@ import cz.mg.entity.mapper.common.EntityObjectMapper;
 import cz.mg.test.Test;
 import cz.mg.test.annotations.TestCase;
 import cz.mg.test.cli.runners.SingleTestClassRunner;
+import utilities.TestRoot;
 
 
 public class EntityObjectMapperTest implements Test {
@@ -15,23 +16,23 @@ public class EntityObjectMapperTest implements Test {
 
     @TestCase
     public void test(){
-        TestTree tree = new TestTree();
-        tree.height = 12;
-        tree.branches = new List<>();
+        TestRoot root = new TestRoot();
+        root.name = "test root";
+        root.branches = new List<>();
 
         ObjectMapper objectMapper = new EntityObjectMapper(
-            new EntityClassFactory().create(TestTree.class)
+            new EntityClassFactory().create(TestRoot.class)
         );
 
         assertNotNull(objectMapper.create(null));
-        assertEquals(TestTree.class, objectMapper.create(null).getClass());
-        assertEquals("TestTree", objectMapper.getName());
-        assertEquals(null, objectMapper.getValue(tree));
+        assertEquals(TestRoot.class, objectMapper.create(null).getClass());
+        assertEquals(TestRoot.class.getSimpleName(), objectMapper.getName());
+        assertEquals(null, objectMapper.getValue(root));
 
-        List<Object> fields = objectMapper.getFields(tree);
+        List<Object> fields = objectMapper.getFields(root);
         assertNotNull(fields);
         assertEquals(2, fields.count());
-        assertSame(tree.branches, fields.get(0));
-        assertSame(tree.height, fields.get(1));
+        assertSame(root.branches, fields.get(0));
+        assertSame(root.name, fields.get(1));
     }
 }

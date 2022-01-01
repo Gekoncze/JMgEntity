@@ -4,6 +4,7 @@ import cz.mg.entity.mapper.common.EnumObjectMapper;
 import cz.mg.test.Test;
 import cz.mg.test.annotations.TestCase;
 import cz.mg.test.cli.runners.SingleTestClassRunner;
+import utilities.TestEnum;
 
 
 public class EnumObjectMapperTest implements Test {
@@ -13,10 +14,11 @@ public class EnumObjectMapperTest implements Test {
 
     @TestCase
     public void test(){
-        TestEnum value = TestEnum.TWO;
+        TestEnum value = TestEnum.TUESDAY;
         ObjectMapper objectMapper = new EnumObjectMapper(TestEnum.class);
-        assertEquals(value, objectMapper.create("TWO"));
+        assertEquals(value, objectMapper.create("TUESDAY"));
         assertEquals(TestEnum.class.getSimpleName(), objectMapper.getName());
-        assertEquals("TWO", objectMapper.getValue(value));
+        assertEquals("TUESDAY", objectMapper.getValue(value));
+        assertEquals(0, objectMapper.getFields(value).count());
     }
 }
