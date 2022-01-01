@@ -4,6 +4,7 @@ import cz.mg.collections.list.List;
 import cz.mg.test.Test;
 import cz.mg.test.annotations.TestCase;
 import cz.mg.test.cli.runners.SingleTestClassRunner;
+import utilities.TestLeaf;
 
 
 public class EntityFieldTest implements Test {
@@ -13,19 +14,29 @@ public class EntityFieldTest implements Test {
 
     @TestCase(order = 1)
     public void testGet() throws Exception {
-        EntityClass entityClass = new EntityClass(TestEntity.class, new List<>(), new List<>());
-        EntityField entityField = new EntityField(entityClass, TestEntity.class.getField("number"));
-        TestEntity entity = new TestEntity();
-        entity.number = 7;
-        assertEquals(entity.number, entityField.get(entity));
+        EntityClass entityClass = new EntityClass(TestLeaf.class, new List<>(), new List<>());
+        EntityField entityField = new EntityField(entityClass, TestLeaf.class.getField("integerValue"));
+        TestLeaf entity = new TestLeaf();
+        entity.integerValue = 7;
+        assertEquals(entity.integerValue, entityField.get(entity));
     }
 
     @TestCase(order = 2)
     public void testSet() throws Exception {
-        EntityClass entityClass = new EntityClass(TestEntity.class, new List<>(), new List<>());
-        EntityField entityField = new EntityField(entityClass, TestEntity.class.getField("number"));
-        TestEntity entity = new TestEntity();
+        EntityClass entityClass = new EntityClass(TestLeaf.class, new List<>(), new List<>());
+        EntityField entityField = new EntityField(entityClass, TestLeaf.class.getField("integerValue"));
+        TestLeaf entity = new TestLeaf();
         entityField.set(entity, 7);
-        assertEquals(7, entity.number);
+        assertEquals(7, entity.integerValue);
+    }
+
+    @TestCase(order = 3)
+    public void testIllegalSet() throws Exception {
+        EntityClass entityClass = new EntityClass(TestLeaf.class, new List<>(), new List<>());
+        EntityField entityField = new EntityField(entityClass, TestLeaf.class.getField("integerValue"));
+        TestLeaf entity = new TestLeaf();
+        assertExceptionThrown(IllegalArgumentException.class, () -> {
+            entityField.set(entity, 'x');
+        });
     }
 }

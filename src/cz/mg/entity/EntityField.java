@@ -51,7 +51,7 @@ public @Utility class EntityField {
         } catch (ReflectiveOperationException e) {
             throw new RuntimeException(e);
         } catch (IllegalArgumentException e){
-            throw new RuntimeException(createSetFieldErrorMessage(value), e);
+            throw new IllegalArgumentException(createSetFieldErrorMessage(value), e);
         }
     }
 
