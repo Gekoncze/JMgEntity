@@ -1,15 +1,12 @@
 tests
     move explorer and explorer gui tests from another project
-    add mapper test
-
-    remove deprecated test classes
-        replace deprecated test classes with new classes
 
     add more unit tests
         transaction
         transaction manager
         all explorer services
         all explorer gui services
+        mapper test
 
 validator
     add "entity as a whole" validator
