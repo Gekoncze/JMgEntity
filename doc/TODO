@@ -1,8 +1,6 @@
 tests
     move explorer and explorer gui tests from another project
 
-    add simple icons for new test classes
-
     remove deprecated test classes
         replace deprecated test classes with new classes
 
