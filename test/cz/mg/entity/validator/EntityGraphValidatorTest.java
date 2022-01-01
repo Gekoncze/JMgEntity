@@ -2,10 +2,10 @@ package cz.mg.entity.validator;
 
 import cz.mg.collections.list.List;
 import cz.mg.entity.EntityClassInitializer;
-import cz.mg.entity.TestEntity;
 import cz.mg.test.Test;
 import cz.mg.test.annotations.TestCase;
 import cz.mg.test.cli.runners.SingleTestClassRunner;
+import utilities.TestChain;
 
 
 public class EntityGraphValidatorTest implements Test {
@@ -15,16 +15,16 @@ public class EntityGraphValidatorTest implements Test {
 
     @TestCase(order = 1)
     public void testValidationPass(){
-        new EntityClassInitializer().initialize(new List<>(TestEntity.class));
+        new EntityClassInitializer().initialize(new List<>(TestChain.class));
 
-        TestEntity entity01 = new TestEntity();
-        entity01.number = 1;
+        TestChain entity01 = new TestChain();
+        entity01.name = "first";
 
-        TestEntity entity02 = new TestEntity();
-        entity02.number = 2;
+        TestChain entity02 = new TestChain();
+        entity02.name = "second";
 
-        TestEntity entity03 = new TestEntity();
-        entity03.number = 3;
+        TestChain entity03 = new TestChain();
+        entity03.name = "third";
 
         entity01.next = entity02;
         entity02.next = entity03;
@@ -37,24 +37,25 @@ public class EntityGraphValidatorTest implements Test {
 
     @TestCase(order = 2)
     public void testValidationFail(){
-        new EntityClassInitializer().initialize(new List<>(TestEntity.class));
+        new EntityClassInitializer().initialize(new List<>(TestChain.class));
 
-        TestEntity entity01 = new TestEntity();
-        entity01.number = null;
+        TestChain entity01 = new TestChain();
+        entity01.name = null;
 
-        TestEntity entity02 = new TestEntity();
-        entity02.number = null;
+        TestChain entity02 = new TestChain();
+        entity02.name = null;
 
-        TestEntity entity03 = new TestEntity();
-        entity03.number = null;
+        TestChain entity03 = new TestChain();
+        entity03.name = null;
 
         entity01.next = entity02;
         entity02.next = entity03;
         entity03.next = entity01;
 
-        ValidationsException exception = assertExceptionThrown(ValidationsException.class, () -> {
-            new EntityGraphValidator().validate(entity01);
-        });
+        ValidationsException exception = assertExceptionThrown(
+            ValidationsException.class,
+            () -> new EntityGraphValidator().validate(entity01)
+        );
 
         assertEquals(3, exception.getExceptions().count());
     }

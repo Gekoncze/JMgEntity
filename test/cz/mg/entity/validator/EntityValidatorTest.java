@@ -2,10 +2,10 @@ package cz.mg.entity.validator;
 
 import cz.mg.collections.list.List;
 import cz.mg.entity.EntityClassInitializer;
-import cz.mg.entity.TestEntity;
 import cz.mg.test.Test;
 import cz.mg.test.annotations.TestCase;
 import cz.mg.test.cli.runners.SingleTestClassRunner;
+import utilities.TestRoot;
 
 
 public class EntityValidatorTest implements Test {
@@ -15,25 +15,26 @@ public class EntityValidatorTest implements Test {
 
     @TestCase(order = 1)
     public void testValidationPass(){
-        new EntityClassInitializer().initialize(new List<>(TestEntity.class));
+        new EntityClassInitializer().initialize(new List<>(TestRoot.class));
 
-        TestEntity entity = new TestEntity();
-        entity.number = 1;
+        TestRoot testRoot = new TestRoot();
+        testRoot.name = "Test Root";
 
         assertExceptionNotThrown(() -> {
-            new EntityValidator().validate(entity);
+            new EntityValidator().validate(testRoot);
         });
     }
 
     @TestCase(order = 2)
     public void testValidationFail(){
-        new EntityClassInitializer().initialize(new List<>(TestEntity.class));
+        new EntityClassInitializer().initialize(new List<>(TestRoot.class));
 
-        TestEntity entity = new TestEntity();
-        entity.number = null;
+        TestRoot testRoot = new TestRoot();
+        testRoot.name = null;
 
-        assertExceptionThrown(ValidationException.class, () -> {
-            new EntityValidator().validate(entity);
-        });
+        assertExceptionThrown(
+            ValidationException.class,
+            () -> new EntityValidator().validate(testRoot)
+        );
     }
 }
