@@ -4,6 +4,7 @@ import cz.mg.collections.list.List;
 import cz.mg.test.Test;
 import cz.mg.test.annotations.TestCase;
 import cz.mg.test.cli.runners.SingleTestClassRunner;
+import utilities.TestLeaf;
 
 
 public class EntityClassTest implements Test {
@@ -35,8 +36,8 @@ public class EntityClassTest implements Test {
 
     @TestCase(order = 3)
     public void testNewInstance(){
-        EntityClass entityClass = new EntityClass(TestEntity.class, new List<>(), new List<>());
-        TestEntity testEntity = (TestEntity) entityClass.newInstance();
-        assertNotNull(testEntity);
+        EntityClass entityClass = new EntityClass(TestLeaf.class, new List<>(), new List<>());
+        TestLeaf testLeaf = (TestLeaf) entityClass.newInstance();
+        assertNotNull(testLeaf);
     }
 }
