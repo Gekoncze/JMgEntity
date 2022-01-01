@@ -20,6 +20,7 @@ public class ReadServiceTest implements Test {
     public void testReadFromEntity(){
         ReadService readService = new ReadService();
         TestSubclass entity = new TestSubclass();
+
         entity.booleanValue = true;
         entity.byteValue = 7;
         entity.characterValue = 'x';
@@ -54,13 +55,13 @@ public class ReadServiceTest implements Test {
 
     @TestCase(order = 2)
     public void testReadFromList(){
+        ReadService readService = new ReadService();
         List<TestEnum> list = new List<>();
+
         TestEnum first = TestEnum.SATURDAY;
         TestEnum second = TestEnum.SUNDAY;
         list.addLast(first);
         list.addLast(second);
-
-        ReadService readService = new ReadService();
 
         assertExceptionThrown(
             ArrayIndexOutOfBoundsException.class,
