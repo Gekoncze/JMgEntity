@@ -16,7 +16,7 @@ public @Service class EntityClassInitializer {
     private final @Mandatory @Shared EntityClassFactory factory = new EntityClassFactory();
     private final @Mandatory @Shared EntityClassProvider provider = new EntityClassProvider();
 
-    public void init(@Mandatory List<Class> classes){
+    public void initialize(@Mandatory List<Class> classes){
         List<EntityClass> entityClasses = new List<>();
 
         for(Class clazz : classes){

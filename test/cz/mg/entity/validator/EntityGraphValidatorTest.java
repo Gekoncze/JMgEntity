@@ -15,7 +15,7 @@ public class EntityGraphValidatorTest implements Test {
 
     @TestCase(order = 1)
     public void testValidationPass(){
-        new EntityClassInitializer().init(new List<>(TestEntity.class));
+        new EntityClassInitializer().initialize(new List<>(TestEntity.class));
 
         TestEntity entity01 = new TestEntity();
         entity01.number = 1;
@@ -37,7 +37,7 @@ public class EntityGraphValidatorTest implements Test {
 
     @TestCase(order = 2)
     public void testValidationFail(){
-        new EntityClassInitializer().init(new List<>(TestEntity.class));
+        new EntityClassInitializer().initialize(new List<>(TestEntity.class));
 
         TestEntity entity01 = new TestEntity();
         entity01.number = null;

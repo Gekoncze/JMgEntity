@@ -9,7 +9,7 @@ public class TestInitializer {
     }
 
     public void initialize(){
-        new EntityClassInitializer().init(new List<>(
+        new EntityClassInitializer().initialize(new List<>(
             TestRoot.class,
             TestBranch.class,
             TestLeaf.class

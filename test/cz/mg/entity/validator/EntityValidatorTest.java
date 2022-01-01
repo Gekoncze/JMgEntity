@@ -15,7 +15,7 @@ public class EntityValidatorTest implements Test {
 
     @TestCase(order = 1)
     public void testValidationPass(){
-        new EntityClassInitializer().init(new List<>(TestEntity.class));
+        new EntityClassInitializer().initialize(new List<>(TestEntity.class));
 
         TestEntity entity = new TestEntity();
         entity.number = 1;
@@ -27,7 +27,7 @@ public class EntityValidatorTest implements Test {
 
     @TestCase(order = 2)
     public void testValidationFail(){
-        new EntityClassInitializer().init(new List<>(TestEntity.class));
+        new EntityClassInitializer().initialize(new List<>(TestEntity.class));
 
         TestEntity entity = new TestEntity();
         entity.number = null;
