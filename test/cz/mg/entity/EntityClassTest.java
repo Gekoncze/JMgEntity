@@ -15,23 +15,17 @@ public class EntityClassTest implements Test {
     @TestCase(order = 1)
     public void testGetField() throws Exception {
         List<EntityField> fields = new List<>();
-        EntityClass entityClass = new EntityClass(TestEntity.class, fields, new List<>());
-        EntityField numberField = new EntityField(entityClass, TestEntity.class.getField("number"));
-        EntityField enumerationField = new EntityField(entityClass, TestEntity.class.getField("enumeration"));
-        EntityField nextField = new EntityField(entityClass, TestEntity.class.getField("next"));
-        fields.addLast(numberField);
-        fields.addLast(enumerationField);
-        fields.addLast(nextField);
-        assertEquals(numberField, entityClass.getField("number"));
-        assertEquals(enumerationField, entityClass.getField("enumeration"));
-        assertEquals(nextField, entityClass.getField("next"));
-        assertExceptionThrown(() -> entityClass.getField("xyz"));
+        EntityClass entityClass = new EntityClass(TestLeaf.class, fields, new List<>());
+        EntityField integerValueField = new EntityField(entityClass, TestLeaf.class.getField("integerValue"));
+        fields.addLast(integerValueField);
+        assertEquals(integerValueField, entityClass.getField("integerValue"));
+        assertNull(entityClass.getField("xyz"));
     }
 
     @TestCase(order = 2)
     public void testGetName(){
-        EntityClass entityClass = new EntityClass(TestEntity.class, new List<>(), new List<>());
-        assertEquals(TestEntity.class.getSimpleName(), entityClass.getName());
+        EntityClass entityClass = new EntityClass(TestLeaf.class, new List<>(), new List<>());
+        assertEquals(TestLeaf.class.getSimpleName(), entityClass.getName());
     }
 
     @TestCase(order = 3)
